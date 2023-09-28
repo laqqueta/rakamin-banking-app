@@ -14,18 +14,16 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
+        DB::table('user')->insert([
             [
-                'name' => 'admin',
-                'email' => 'admin@example.com',
-                'password' => Hash::make('password123'), // Gantilah dengan kata sandi yang diinginkan
-            ],
-            [
-                'name' => 'user',
-                'email' => 'user@example.com',
-                'password' => Hash::make('password123'), // Gantilah dengan kata sandi yang diinginkan
-            ],
-            // Tambahkan lebih banyak data pengguna di sini jika diperlukan
+                'account_name' => 'admin',
+                'account_password' => Hash::make('admin'),
+                'account_address' => 'Rumah admin',
+                'account_card_number' => '9999-99999-99',
+                'phone_number' => '089999999999',
+                'email' => 'admin@email.com',
+                'balance' => '999999999'
+            ]
         ]);
     }
     }
