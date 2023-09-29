@@ -67,7 +67,7 @@
                     </div>
                 </li> -->
                 <li class="nav-item">
-                    <form method="POST" action="logout.php">
+                    <form method="GET" action="/logout">
                         <button class="d-inline btn btn-danger" name="logout">Logout</button>
                     </form>
                 </li>
@@ -95,10 +95,10 @@
                     <div class="info">
                         <a data-toggle="collapse" href="#collapseExample" aria-expanded="false" class="collapsed">
                             <span>
-                                <h1 class="mb-2">User</h1>
+                                <h1 class="mb-2">{{ $users->account_name }}</h1>
                                 <div class="clearfix"></div>
                                 <span class="caret"></span>
-                                <span class="user-level">Nasabah Status</span>
+                                <span class="user-level">nasabah</span>
                             </span>
                         </a>
                         <div class="clearfix"></div>
@@ -195,7 +195,7 @@
                 <div class="small-box bg-info">
                     <div class="inner">
                         <h3>Tabungan & Deposito</h3>
-                        <p>More info</p>
+                        <p id="rupiah"></p>
                     </div>
                     <div class="icon">
                         <i class="fas fa-user-graduate"></i>
@@ -219,6 +219,24 @@
             </div>
         </div>
     </div>
+
+    <script>
+        // Fungsi untuk mengubah angka menjadi format Rupiah
+        function formatRupiah(angka) {
+            var reverse = angka.toString().split('').reverse().join(''),
+                ribuan = reverse.match(/\d{1,3}/g);
+            ribuan = ribuan.join('.').split('').reverse().join('');
+            return 'Rp. ' + ribuan;
+        }
+
+        // Angka yang ingin diubah menjadi format Rupiah
+        var balance = {{ $users->balance }};
+        // var balance = 50000;
+
+        // Mengubah angka menjadi format Rupiah dan menaruhnya pada elemen paragraf
+        document.getElementById('rupiah').innerHTML = formatRupiah(balance);
+    </script>
+
 </div>
 
 
