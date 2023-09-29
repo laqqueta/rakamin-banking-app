@@ -30,6 +30,8 @@ class User extends Authenticatable
         'balance',
     ];
 
+    protected $table = 'user';
+
     /**
      * The attributes that should be hidden for serialization.
      *
