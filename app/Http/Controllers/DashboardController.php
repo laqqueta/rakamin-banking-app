@@ -20,9 +20,6 @@ class DashboardController extends Controller
         // Mengambil objek akun berdasarkan ID
         // $users = User::findOrFail($accountId);
 
-
-        // $accountId = Auth::user();
-
         // Mengambil objek akun berdasarkan ID
         // @dd($accountId);
         // @dd(session()->all());
