@@ -18,7 +18,7 @@ class UsersTableSeeder extends Seeder
             [
                 'account_name' => 'user',
                 'password' => Hash::make('user'),
-                'account_address' => 'Rumah admin',
+                'account_address' => 'Rumah user',
                 'account_card_number' => '9999-99999-99',
                 'phone_number' => '089999999999',
                 'email' => 'user@email.com',

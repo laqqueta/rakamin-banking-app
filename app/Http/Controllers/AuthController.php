@@ -40,7 +40,7 @@ class AuthController extends Controller
 
             return redirect('/dashboard')->with('success', 'Login Success');
         } else {
-            return redirect('login')->withErrors('Username & Password Yang Dimasukkan Salah');
+            return redirect('login')->withErrors('Username/Password Yang Dimasukkan Salah');
         }
     }
 
