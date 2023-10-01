@@ -14,7 +14,7 @@ class AuthController extends Controller
         return view('auth.login');
     }
 
-    function login(Request $request)
+    public function login(Request $request)
     {
         Session::flash('email', $request->email);
 
@@ -26,23 +26,21 @@ class AuthController extends Controller
             'password.required' => 'Password Wajib Di Isi'
         ]);
 
-        $LoginInfo = [
+        $loginInfo = [
             'email' => $request->email,
             'password' => $request->password
         ];
 
-        session()->put([
-            'email' => $request->email,
-            'password' => $request->password,
-        ]);
+        if (Auth::attempt($loginInfo)) {
+            // Retrieve the authenticated user's ID
+            $userId = Auth::id();
 
-        // dd(session()->all());
-        // dd("testing");
+            // Store the user's ID in the session
+            session()->put('id', $userId);
 
-        if (Auth::attempt($LoginInfo)) {
             return redirect('/dashboard')->with('success', 'Login Success');
         } else {
-            return redirect('login')->withErrors('Username & Password Yang Dimasukkan Salah');
+            return redirect('login')->withErrors('Username/Password Yang Dimasukkan Salah');
         }
     }
 
@@ -50,6 +48,7 @@ class AuthController extends Controller
     {
         Auth::logout();
         Session::flush();
+        
         return redirect('/login')->with('success', 'Berhasil Logout');
     }
 }

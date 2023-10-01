@@ -17,6 +17,8 @@
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
 
@@ -28,6 +30,7 @@
             <img class="animation__shake" src="{{ asset('assets/rakamin-logo.png') }}" alt="logo" height="80" width="160">
         </div>
 
+        
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
             <!-- Left navbar links -->
@@ -67,7 +70,7 @@
                     </div>
                 </li> -->
                 <li class="nav-item">
-                    <form method="POST" action="logout.php">
+                    <form method="GET" action="/logout">
                         <button class="d-inline btn btn-danger" name="logout">Logout</button>
                     </form>
                 </li>
@@ -95,10 +98,10 @@
                     <div class="info">
                         <a data-toggle="collapse" href="#collapseExample" aria-expanded="false" class="collapsed">
                             <span>
-                                <h1 class="mb-2">User</h1>
+                                <h1 class="mb-2">{{ $users->account_name }}</h1>
                                 <div class="clearfix"></div>
                                 <span class="caret"></span>
-                                <span class="user-level">Nasabah Status</span>
+                                <span class="user-level">nasabah</span>
                             </span>
                         </a>
                         <div class="clearfix"></div>
@@ -131,9 +134,7 @@
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                        <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-
+                       
                         <li class="nav-item">
                             <a href="" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -195,7 +196,7 @@
                 <div class="small-box bg-info">
                     <div class="inner">
                         <h3>Tabungan & Deposito</h3>
-                        <p>More info</p>
+                        <p id="rupiah"></p>
                     </div>
                     <div class="icon">
                         <i class="fas fa-user-graduate"></i>
@@ -219,6 +220,24 @@
             </div>
         </div>
     </div>
+
+    <script>
+        // Fungsi untuk mengubah angka menjadi format Rupiah
+        function formatRupiah(angka) {
+            var reverse = angka.toString().split('').reverse().join(''),
+                ribuan = reverse.match(/\d{1,3}/g);
+            ribuan = ribuan.join('.').split('').reverse().join('');
+            return 'Rp. ' + ribuan;
+        }
+
+        // Angka yang ingin diubah menjadi format Rupiah
+        var balance = {{ $users->balance }};
+        // var balance = 50000;
+
+        // Mengubah angka menjadi format Rupiah dan menaruhnya pada elemen paragraf
+        document.getElementById('rupiah').innerHTML = formatRupiah(balance);
+    </script>
+
 </div>
 
 
@@ -313,6 +332,8 @@
     </div>
     <!-- ./wrapper -->
 
+    
+
     <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/js/adminlte.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
@@ -320,6 +341,27 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 
+
+    @if (Session::has('success'))
+        <script>
+            const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+            })
+
+            Toast.fire({
+            icon: 'success',
+            title: '{{ Session::get('success') }}'
+            })
+        </script>
+    @endif
 
 </body>
 
