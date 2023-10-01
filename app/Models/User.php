@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class Users extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -28,6 +28,8 @@ class User extends Authenticatable
         'account_card_number',
         'phone_number',
         'balance',
+        'created_at',
+        'updated_at'
     ];
 
     protected $table = 'users';
