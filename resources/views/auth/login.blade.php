@@ -42,7 +42,7 @@
     @if (Session::has('success'))
         <script>
             Swal.fire(
-                'Congrats!!',
+                'Success!!',
                 '{{ Session::get('success') }}',
                 'success'
             );
