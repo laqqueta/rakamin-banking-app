@@ -30,7 +30,7 @@
             <img class="animation__shake" src="{{ asset('assets/rakamin-logo.png') }}" alt="logo" height="80" width="160">
         </div>
 
-        
+
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
             <!-- Left navbar links -->
@@ -134,7 +134,7 @@
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                       
+
                         <li class="nav-item">
                             <a href="" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -244,7 +244,7 @@
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
-        
+
             <!-- Small boxes (Stat box) -->
             <div class="row">
 
@@ -279,7 +279,7 @@
                     </div>
                 </div>
                 <!-- ./col -->
-                
+
                 <!-- ./col -->
                 <div class="col-lg-4 col-6">
                     <!-- small box -->
@@ -332,7 +332,7 @@
     </div>
     <!-- ./wrapper -->
 
-    
+
 
     <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/js/adminlte.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
