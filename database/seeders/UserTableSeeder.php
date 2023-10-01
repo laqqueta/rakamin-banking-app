@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Users;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
-class UsersTableSeeder extends Seeder
+class UserTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,13 +14,12 @@ class UsersTableSeeder extends Seeder
     {
         /**
         * NOTE!
-         * Every account have same password (for testing purpose)
-         * Password: accountpass
+         * Every account have same password as their account name
          *
-         * See UsersFactory for more detail.
+         * See UserFactory for more detail.
          */
 
-        Users::factory()->count(10)->create();
+        User::factory()->count(10)->create();
     }
 }
 
