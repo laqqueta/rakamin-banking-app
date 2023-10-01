@@ -13,19 +13,29 @@ class DashboardController extends Controller
      */
     public function index(Request $request)
     {
-        // Mendapatkan ID akun dari session
         $accountId = $request->session()->get('id');
-        $users = User::find($accountId);
+        $balanceDetail = $this->getAccountBalanceDetail($accountId);
 
-        // @dd($accountId);
-        // @dd(session()->all());
+        $data = array(
+            'name' => $balanceDetail->account_name,
+            'balance' => $balanceDetail->balance,
+            'outcome' => $this->getOutcome(),
+            'income' => $this->getIncome(),
+        );
 
-        $name = $users->account_name;
-        $account_address = $users->account_address;
-        $email = $users->email;
-        $phone_number = $users->phone_number;
-        $balance = $users->balance;
+        return view('dashboard', compact('data'));
+    }
 
-        return view('dashboard', compact('users'));
+    private function getAccountBalanceDetail($accountId) {
+        return User::query()
+            ->find($accountId, ['account_name', 'balance']);
+    }
+
+    private function getIncome() {
+        return 1000;
+    }
+
+    private function getOutcome() {
+        return 2000;
     }
 }
