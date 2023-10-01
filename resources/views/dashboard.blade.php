@@ -98,7 +98,7 @@
                     <div class="info">
                         <a data-toggle="collapse" href="#collapseExample" aria-expanded="false" class="collapsed">
                             <span>
-                                <h1 class="mb-2">{{ $users->account_name }}</h1>
+                                <h1 class="mb-2">{{ $data['name'] }}</h1>
                                 <div class="clearfix"></div>
                                 <span class="caret"></span>
                                 <span class="user-level">nasabah</span>
@@ -231,7 +231,7 @@
         }
 
         // Angka yang ingin diubah menjadi format Rupiah
-        var balance = {{ $users->balance }};
+        var balance = {{ $data['balance'] }};
         // var balance = 50000;
 
         // Mengubah angka menjadi format Rupiah dan menaruhnya pada elemen paragraf
@@ -254,7 +254,7 @@
                     <div class="small-box bg-purple text-white">
                         <div class="inner">
                             <h3>Income</h3>
-                            <p>More info</p>
+                            <p>{{$data['income']}}</p>
                         </div>
                         <div class="icon">
                             <i class="fas fa-book-open"></i>
@@ -270,7 +270,7 @@
                         <div class="inner">
                             <h3>Outcome</h3>
 
-                            <p>More info</p>
+                            <p>{{$data['outcome']}}</p>
                         </div>
                         <div class="icon">
                             <i class="fas fa-school"></i>
