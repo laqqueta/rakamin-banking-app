@@ -16,6 +16,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    protected $table = 'users';
 
     protected $primaryKey = 'id';
 
@@ -31,7 +32,7 @@ class User extends Authenticatable
         'updated_at'
     ];
 
-    protected $table = 'users';
+    public $timestamps = false;
 
     /**
      * The attributes that should be hidden for serialization.
