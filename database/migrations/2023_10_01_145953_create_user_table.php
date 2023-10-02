@@ -20,8 +20,6 @@ return new class extends Migration
             $table->char('phone_number', 12);
             $table->string('email', 32);
             $table->bigInteger('balance');
-            $table->dateTime('created_at');
-            $table->dateTime('updated_at');
         });
     }
 
