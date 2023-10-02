@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Transfer extends Model
 {
@@ -18,4 +19,10 @@ class Transfer extends Model
     ];
 
     public $timestamps = false;
+
+    public function user(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'transfer_detail')
+            ->withPivot('date', 'time', 'amount');
+    }
 }
