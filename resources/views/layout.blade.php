@@ -98,7 +98,7 @@
                     <div class="info">
                         <a data-toggle="collapse" href="#collapseExample" aria-expanded="false" class="collapsed">
                             <span>
-                                <h1 class="mb-2">User</h1>
+                                <h1 class="mb-2">{{Auth::user()->account_name}}</h1>
                                 <div class="clearfix"></div>
                                 <span class="caret"></span>
                                 <span class="user-level">nasabah</span>
