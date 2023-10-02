@@ -6,7 +6,7 @@ use Faker\Provider\DateTime;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class TransactionDetailTableSeeder extends Seeder
+class TransferDetailTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.

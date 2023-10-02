@@ -15,8 +15,8 @@ class DatabaseSeeder extends Seeder
         //
         $this->call([
             UserTableSeeder::class,
-            TransactionTableSeeder::class,
-            TransactionDetailTableSeeder::class
+            TransferTableSeeder::class,
+            TransferDetailTableSeeder::class
         ]);
     }
 }
