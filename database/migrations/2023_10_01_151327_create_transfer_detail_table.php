@@ -14,13 +14,12 @@ return new class extends Migration
         Schema::create('transfer_detail', function (Blueprint $table) {
             $table->foreignId('transfer_id')
                 ->constrained('transfer')
-                ->cascadeOnDelete()
-                ->cascadeOnUpdate();
+                ->cascadeOnDelete();
 
             $table->foreignId('user_id')
+                ->comment('Receiver user ID')
                 ->constrained('users')
-                ->cascadeOnDelete()
-                ->cascadeOnUpdate();
+                ->cascadeOnDelete();
 
             $table->date('date');
             $table->time('time');

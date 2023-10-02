@@ -220,24 +220,6 @@
             </div>
         </div>
     </div>
-
-    <script>
-        // Fungsi untuk mengubah angka menjadi format Rupiah
-        function formatRupiah(angka) {
-            var reverse = angka.toString().split('').reverse().join(''),
-                ribuan = reverse.match(/\d{1,3}/g);
-            ribuan = ribuan.join('.').split('').reverse().join('');
-            return 'Rp. ' + ribuan;
-        }
-
-        // Angka yang ingin diubah menjadi format Rupiah
-        var balance = {{ $data['balance'] }};
-        // var balance = 50000;
-
-        // Mengubah angka menjadi format Rupiah dan menaruhnya pada elemen paragraf
-        document.getElementById('rupiah').innerHTML = formatRupiah(balance);
-    </script>
-
 </div>
 
 
@@ -254,7 +236,7 @@
                     <div class="small-box bg-purple text-white">
                         <div class="inner">
                             <h3>Income</h3>
-                            <p>{{$data['income']}}</p>
+                            <p id="income"></p>
                         </div>
                         <div class="icon">
                             <i class="fas fa-book-open"></i>
@@ -269,8 +251,7 @@
                     <div class="small-box bg-danger">
                         <div class="inner">
                             <h3>Outcome</h3>
-
-                            <p>{{$data['outcome']}}</p>
+                            <p id="outcome"></p>
                         </div>
                         <div class="icon">
                             <i class="fas fa-school"></i>
@@ -362,7 +343,26 @@
             })
         </script>
     @endif
+    <script>
+        // Fungsi untuk mengubah angka menjadi format Rupiah
+        function formatRupiah(angka) {
+            var reverse = angka.toString().split('').reverse().join(''),
+                ribuan = reverse.match(/\d{1,3}/g);
+            ribuan = ribuan.join('.').split('').reverse().join('');
+            return 'Rp. ' + ribuan;
+        }
 
+        // Angka yang ingin diubah menjadi format Rupiah
+        var balance = {{ $data['balance'] }};
+        var income = {{$data['income']}};
+        var outcome = {{$data['outcome']}};
+        // var balance = 50000;
+
+        // Mengubah angka menjadi format Rupiah dan menaruhnya pada elemen paragraf
+        document.getElementById('rupiah').innerHTML = formatRupiah(balance);
+        document.getElementById('income').innerHTML = formatRupiah(income);
+        document.getElementById('outcome').innerHTML = formatRupiah(outcome);
+    </script>
 </body>
 
 </html>

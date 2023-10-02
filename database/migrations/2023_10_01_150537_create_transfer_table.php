@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('transfer', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')
+                ->comment('Sender user ID')
                 ->constrained('users')
-                ->cascadeOnDelete()
-                ->cascadeOnUpdate();
+                ->cascadeOnDelete();
         });
     }
 
