@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html>
-
+@extends('layouts.template')
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -179,6 +177,7 @@
 
 
         <main>
+@section('content')
 
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
@@ -198,6 +197,7 @@
                         </div><!-- /.row -->
                     </div><!-- /.container-fluid -->
                 </div>
+
                 <!-- /.content-header -->
 
         <div class="jumbotron jumbotron-fluid">
@@ -211,9 +211,9 @@
                         <p id="rupiah"></p>
                     </div>
                     <div class="icon">
-                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-wallet"></i>
                     </div>
-                    <a href="siswa/index.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
@@ -225,9 +225,9 @@
                         <p>More info</p>
                     </div>
                     <div class="icon">
-                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-file-invoice"></i>
                     </div>
-                    <a href="guru/index.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
         </div>
@@ -251,9 +251,9 @@
                             <p id="income"></p>
                         </div>
                         <div class="icon">
-                            <i class="fas fa-book-open"></i>
+                            <i class="fas fa-hand-holding-usd"></i>
                         </div>
-                        <a href="mapel/index.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
 
@@ -266,9 +266,9 @@
                             <p id="outcome"></p>
                         </div>
                         <div class="icon">
-                            <i class="fas fa-school"></i>
+                            <i class="fa-solid fa-money-bill-transfer"></i>
                         </div>
-                        <a href="kelas/index.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -283,9 +283,9 @@
                             <p>More info</p>
                         </div>
                         <div class="icon">
-                            <i class="nav-icon far fa-file-alt"></i>
+                            <i class="fas fa-chart-line"></i>
                         </div>
-                        <a href="rapot/index.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -296,7 +296,7 @@
                 <!-- Left col -->
                 <section class="col-lg-7 connectedSortable">
 
-                                    </section>
+                </section>
                 <!-- /.Left col -->
                 <!-- right col (We are only adding the ID to make the widgets sortable)-->
                 <section class="col-lg-5 connectedSortable">
@@ -311,51 +311,7 @@
     <!-- /.content -->
 </div>
 
-        </main>
-
-        <footer class="main-footer">
-            <strong>Copyright &copy; 2023 <a href="#">Rakamin Banking App</a>.</strong>
-            All rights reserved.
-            <div class="float-right d-none d-sm-inline-block">
-                <b>Kelompok  - </b>5
-            </div>
-        </footer>
-
-        <!-- /.control-sidebar -->
-    </div>
-    <!-- ./wrapper -->
-
-
-
-    <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/js/adminlte.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
-
-
-    @if (Session::has('success'))
-        <script>
-            const Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-                toast.addEventListener('mouseenter', Swal.stopTimer)
-                toast.addEventListener('mouseleave', Swal.resumeTimer)
-            }
-            })
-
-            Toast.fire({
-            icon: 'success',
-            title: '{{ Session::get('success') }}'
-            })
-        </script>
-    @endif
-    <script>
+<script>
         // Fungsi untuk mengubah angka menjadi format Rupiah
         function formatRupiah(angka) {
             var reverse = angka.toString().split('').reverse().join(''),
@@ -375,6 +331,5 @@
         document.getElementById('income').innerHTML = formatRupiah(income);
         document.getElementById('outcome').innerHTML = formatRupiah(outcome);
     </script>
-</body>
 
-</html>
+@endsection
