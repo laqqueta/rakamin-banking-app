@@ -62,6 +62,7 @@ class DashboardController extends Controller
 
         return $outcome;
     }
+    
     public function indexLayout(Request $request)
     {
         // Mendapatkan ID akun dari session

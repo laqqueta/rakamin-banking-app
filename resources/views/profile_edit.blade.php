@@ -1,5 +1,5 @@
+@extends('layouts.template')
 
-@extends('layout')
 @section('content')
     <!-- Main -->
     <div class="content-wrapper">

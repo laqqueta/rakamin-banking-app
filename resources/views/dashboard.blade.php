@@ -1,7 +1,6 @@
-@extends('layout')
-@section('content')
+@extends('layouts.template')
 
-        <main>
+@section('content')
 
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
@@ -21,6 +20,7 @@
                         </div><!-- /.row -->
                     </div><!-- /.container-fluid -->
                 </div>
+            
                 <!-- /.content-header -->
 
         <div class="jumbotron jumbotron-fluid">
@@ -34,9 +34,9 @@
                         <p id="rupiah"></p>
                     </div>
                     <div class="icon">
-                        <i class="fas fa-user-graduate"></i>
+                        <i class="fas fa-wallet"></i>
                     </div>
-                    <a href="siswa/index.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
@@ -48,9 +48,9 @@
                         <p>More info</p>
                     </div>
                     <div class="icon">
-                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fas fa-file-invoice"></i>
                     </div>
-                    <a href="guru/index.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
         </div>
@@ -74,9 +74,9 @@
                             <p id="income"></p>
                         </div>
                         <div class="icon">
-                            <i class="fas fa-book-open"></i>
+                            <i class="fas fa-hand-holding-usd"></i>
                         </div>
-                        <a href="mapel/index.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
 
@@ -89,9 +89,9 @@
                             <p id="outcome"></p>
                         </div>
                         <div class="icon">
-                            <i class="fas fa-school"></i>
+                            <i class="fa-solid fa-money-bill-transfer"></i>
                         </div>
-                        <a href="kelas/index.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -106,9 +106,9 @@
                             <p>More info</p>
                         </div>
                         <div class="icon">
-                            <i class="nav-icon far fa-file-alt"></i>
+                            <i class="fas fa-chart-line"></i>
                         </div>
-                        <a href="rapot/index.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -119,7 +119,7 @@
                 <!-- Left col -->
                 <section class="col-lg-7 connectedSortable">
 
-                                    </section>
+                </section>
                 <!-- /.Left col -->
                 <!-- right col (We are only adding the ID to make the widgets sortable)-->
                 <section class="col-lg-5 connectedSortable">
@@ -134,30 +134,25 @@
     <!-- /.content -->
 </div>
 
-        </main>
-    <!-- ./wrapper -->
+<script>
+        // Fungsi untuk mengubah angka menjadi format Rupiah
+        function formatRupiah(angka) {
+            var reverse = angka.toString().split('').reverse().join(''),
+                ribuan = reverse.match(/\d{1,3}/g);
+            ribuan = ribuan.join('.').split('').reverse().join('');
+            return 'Rp. ' + ribuan;
+        }
 
+        // Angka yang ingin diubah menjadi format Rupiah
+        var balance = {{ $data['balance'] }};
+        var income = {{$data['income']}};
+        var outcome = {{$data['outcome']}};
+        // var balance = 50000;
 
-    @if (Session::has('success'))
-        <script>
-            const Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-                toast.addEventListener('mouseenter', Swal.stopTimer)
-                toast.addEventListener('mouseleave', Swal.resumeTimer)
-            }
-            })
+        // Mengubah angka menjadi format Rupiah dan menaruhnya pada elemen paragraf
+        document.getElementById('rupiah').innerHTML = formatRupiah(balance);
+        document.getElementById('income').innerHTML = formatRupiah(income);
+        document.getElementById('outcome').innerHTML = formatRupiah(outcome);
+    </script>
 
-            Toast.fire({
-            icon: 'success',
-            title: '{{ Session::get('success') }}'
-            })
-        </script>
-    @endif
-        
 @endsection
-

@@ -13,20 +13,33 @@ class ProfileController extends Controller
         $accountId = $request->session()->get('id');
         $users = User::find($accountId);
 
+        $data = array(
+            'name' => $users->account_name,
+            // 'balance' => $balanceDetail->balance,
+            // 'outcome' => $this->getUserOutcome($accountId),
+            // 'income' => $this->getUserIncome($accountId),
+        );
+
         $id = $users->id;
         $name = $users->account_name;
         $account_address = $users->account_address;
         $email = $users->email;
         $phone_number = $users->phone_number;
 
-        return view('profile', compact('users'));
+        return view('profile', compact('users', 'data'));
     }
 
 
     public function profileEdit($accountId){
         $edited = User::findOrFail($accountId);
 
-        return view('profile_edit', compact('edited'));
+        $data = array(
+            'name' => $edited->account_name,
+            // 'balance' => $balanceDetail->balance,
+            // 'outcome' => $this->getUserOutcome($accountId),
+            // 'income' => $this->getUserIncome($accountId),
+        );
+        return view('profile_edit', compact('edited', 'data'));
     }
 
     public function profileEditSuccess(Request $request, $accountId){

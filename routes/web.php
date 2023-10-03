@@ -26,7 +26,6 @@ Route::get('/', function () {
 
 Route::get('/login', [AuthController::class, 'index'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
-Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/login', function () {
     if (Auth::check()) {
@@ -37,6 +36,7 @@ Route::get('/login', function () {
 
 Route::middleware(['auth.check'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('index');
+    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
     // Rute lain yang memerlukan autentikasi di sini
     Route::get('/profile', [ProfileController::class, 'profileIndex'])->name('profile');
     Route::get('/profile-edit/{id}', [ProfileController::class, 'profileEdit'])->name('profile-edit');
