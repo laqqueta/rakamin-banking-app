@@ -157,6 +157,18 @@
                         </a>
                     </li>
 
+                    <li class="nav-item">
+                        <a href="{{route('transfer_view')}}" class="nav-link">
+                            <i class="nav-icon far fa-solid fa-money-bill-transfer"></i>
+                            <!-- <i class="nav-icon fas fa-columns"></i> -->
+                            <!-- <i class="nav-icon fas fa-th"></i> -->
+                            <p>
+                                Transfer
+                                <!-- <span class="right badge badge-danger">New</span> -->
+                            </p>
+                        </a>
+                    </li>
+
                     </ul>
                 </nav>
 
