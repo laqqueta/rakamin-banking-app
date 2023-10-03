@@ -55,9 +55,14 @@ class User extends Authenticatable
         // 'password' => 'hashed',
     ];
 
+    public $timestamps = false;
+
+
+
     public function transfer(): BelongsToMany
     {
         return $this->belongsToMany(Transfer::class, 'transfer_detail')
             ->withPivot('date', 'time', 'amount');
     }
+
 }
