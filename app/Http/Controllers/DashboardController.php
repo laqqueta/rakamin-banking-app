@@ -68,9 +68,6 @@ class DashboardController extends Controller
         $accountId = $request->session()->get('id');
         $users = User::find($accountId);
 
-        // @dd($accountId);
-        // @dd(session()->all());
-
         $name = $users->account_name;
         $account_address = $users->account_address;
         $email = $users->email;

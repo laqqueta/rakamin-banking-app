@@ -14,10 +14,7 @@ class ProfileController extends Controller
         $users = User::find($accountId);
 
         $data = array(
-            'name' => $users->account_name,
-            // 'balance' => $balanceDetail->balance,
-            // 'outcome' => $this->getUserOutcome($accountId),
-            // 'income' => $this->getUserIncome($accountId),
+            'name' => $users->account_name
         );
 
         $id = $users->id;
@@ -37,11 +34,9 @@ class ProfileController extends Controller
         $edited = User::findOrFail($accountId);
 
         $data = array(
-            'name' => $edited->account_name,
-            // 'balance' => $balanceDetail->balance,
-            // 'outcome' => $this->getUserOutcome($accountId),
-            // 'income' => $this->getUserIncome($accountId),
+            'name' => $edited->account_name
         );
+        
         return view('profile_edit', compact('edited', 'data'));
     }
 

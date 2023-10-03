@@ -38,7 +38,6 @@ Route::get('/login', function () {
 Route::middleware(['auth.check'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('index');
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
-    // Rute lain yang memerlukan autentikasi di sini
 
     // Route for transfer view and process transfer
     Route::get('/dashboard/transfer', [TransferController::class, 'index'])->name('transfer_view');

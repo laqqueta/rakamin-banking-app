@@ -10,9 +10,16 @@ use Throwable;
 class TransferController extends Controller
 {
     //
-    public function index()
+    public function index(Request $request)
     {
-        return view('transfer');
+        $accountId = $request->session()->get('id');
+        $users = User::find($accountId);
+
+        $data = array(
+            'name' => $users->account_name
+        );
+
+        return view('transfer', compact('data'));
     }
 
     public function transfer(Request $request) {
