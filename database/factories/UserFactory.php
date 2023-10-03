@@ -21,13 +21,14 @@ class UserFactory extends Factory
 
     public function definition(): array
     {
-        $name = $this->faker->name();
+        $name = $this->faker->firstName();
         return [
             'account_name' => $name,
             'email' => $this->faker->safeEmail(),
             'password' => Hash::make($name),
             'account_address' => $this->faker->streetAddress(),
             'account_card_number' => $this->faker->creditCardNumber('Visa', true, '-'),
+            'pin' => $this->faker->randomNumber(6, true),
             'phone_number' => $this->faker->e164PhoneNumber(),
             'balance' => rand(1_000_000, 500_000_000),
         ];
