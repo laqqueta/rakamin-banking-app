@@ -107,43 +107,8 @@
                         </ul>
                     </nav>
                 </div>
+{{--<<<<<<< HEAD--}}
             </aside>
-            <main>
-                <!-- Sidebar Menu -->
-                <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-
-                        <li class="nav-item">
-                            <a href="/dashboard" class="nav-link">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>
-                                    Dashboard
-                                    <!-- <span class="right badge badge-danger">New</span> -->
-                                </p>
-                            </a>
-                        </li>
-
-                    <li class="nav-item">
-                        <a href="/profile" class="nav-link">
-                            <i class="nav-icon far fa-file-alt"></i>
-                            <p>
-                                User Profile
-                                <!-- <span class="right badge badge-danger">New</span> -->
-                            </p>
-                        </a>
-                    </li>
-
-                    </ul>
-                </nav>
-
-                <!-- /.sidebar-menu -->
-            </div>
-            <!-- /.sidebar -->
-        </aside>
-
-
-        <main>
-
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
@@ -162,16 +127,15 @@
                         </div><!-- /.row -->
                     </div><!-- /.container-fluid -->
                 </div>
-            @yield('content')
-            </main>
-            <footer class="main-footer">
-                <strong>Copyright &copy; 2023 <a href="#">Rakamin Banking App</a>.</strong>
-                All rights reserved.
-                <div class="float-right d-none d-sm-inline-block">
-                    <b>Kelompok  - </b>5
-                </div>
-            </footer>
-        </div>
+                <footer class="main-footer">
+                    <strong>Copyright &copy; 2023 <a href="#">Rakamin Banking App</a>.</strong>
+                    All rights reserved.
+                    <div class="float-right d-none d-sm-inline-block">
+                        <b>Kelompok  - </b>5
+                    </div>
+                </footer>
+            </div>
+        @yield('content')
         <!-- ./wrapper -->
         <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/js/adminlte.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

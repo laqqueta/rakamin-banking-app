@@ -1,5 +1,8 @@
 @extends('layouts.template')
-@section('content')
+@yield('main')
+{{--@section('content')--}}
+{{--@endsection--}}
+{{--@sectio?n('content')--}}
     <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -46,8 +49,14 @@
                             <i class="fas fa-file-invoice"></i>
                         </div>
                         <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-@section('page-title', 'Dashboard')
-@section('content')
+{{--@section('page-title', 'Dashboard')--}}
+{{--@section('content')--}}
+{{--@endsection--}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
                          <!-- /.content-header -->
         <div class="jumbotron jumbotron-fluid">
     <div class="container">
@@ -158,6 +167,6 @@
         document.getElementById('rupiah').innerHTML = formatRupiah(balance);
         document.getElementById('income').innerHTML = formatRupiah(income);
         document.getElementById('outcome').innerHTML = formatRupiah(outcome);
-    </script>
+</script>
 
-@endsection
+
