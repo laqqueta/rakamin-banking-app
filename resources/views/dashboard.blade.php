@@ -1,7 +1,62 @@
 @extends('layouts.template')
-
-@section('page-title', 'Dashboard')
-@section('content')
+@yield('main')
+{{--@section('content')--}}
+{{--@endsection--}}
+{{--@sectio?n('content')--}}
+    <!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">Dashboard</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="">Home</a></li>
+                        <li class="breadcrumb-item active">Dashboard</li>
+                    </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-12"> <!-- Ubah col-6 menjadi col-12 -->
+                    <!-- small box -->
+                    <div class="small-box bg-info">
+                        <div class="inner">
+                            <h3>Tabungan & Deposito</h3>
+                            <p id="rupiah"></p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-wallet"></i>
+                        </div>
+                        <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-6 col-12"> <!-- Ubah col-6 menjadi col-12 -->
+                    <!-- small box -->
+                    <div class="small-box bg-success">
+                        <div class="inner">
+                            <h3>History Pembayaran</h3>
+                            <p>More info</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-file-invoice"></i>
+                        </div>
+                        <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+{{--@section('page-title', 'Dashboard')--}}
+{{--@section('content')--}}
+{{--@endsection--}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
                          <!-- /.content-header -->
         <div class="jumbotron jumbotron-fluid">
     <div class="container">
@@ -13,31 +68,10 @@
                         <h3>Tabungan & Deposito</h3>
                         <p id="rupiah"></p>
                     </div>
-                    <div class="icon">
-                        <i class="fas fa-wallet"></i>
-                    </div>
-                    <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
-            <!-- ./col -->
-            <div class="col-lg-6 col-12"> <!-- Ubah col-6 menjadi col-12 -->
-                <!-- small box -->
-                <div class="small-box bg-success">
-                    <div class="inner">
-                        <h3>History Pembayaran</h3>
-                        <p>More info</p>
-                    </div>
-                    <div class="icon">
-                        <i class="fas fa-file-invoice"></i>
-                    </div>
-                    <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
         </div>
     </div>
-</div>
-
-
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
@@ -133,6 +167,6 @@
         document.getElementById('rupiah').innerHTML = formatRupiah(balance);
         document.getElementById('income').innerHTML = formatRupiah(income);
         document.getElementById('outcome').innerHTML = formatRupiah(outcome);
-    </script>
+</script>
 
-@endsection
+

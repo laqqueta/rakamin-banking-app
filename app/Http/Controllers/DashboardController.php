@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Transfer;
 use Illuminate\Http\Request;
-use Illuminate\Foundation\Auth\User;
+use Illuminate\Foundation\Auth\User as auth_user, App\Models\User as user;
 
 class DashboardController extends Controller
 {
@@ -27,12 +27,12 @@ class DashboardController extends Controller
     }
 
     private function getAccountBalanceDetail($accountId) {
-        return User::query()
+        return auth_user::query()
             ->find($accountId, ['account_name', 'balance']);
     }
 
     private function getUserIncome($accountId) {
-        $user = \App\Models\User::query()->findOrFail($accountId); // sender
+        $user = user::query()->findOrFail($accountId); // sender
 
         $income = 0;
 
@@ -62,5 +62,21 @@ class DashboardController extends Controller
         return $outcome;
     }
     
+    public function indexLayout(Request $request)
+    {
+        // Mendapatkan ID akun dari session
+        $accountId = $request->session()->get('id');
+        $users = User::find($accountId);
 
+        // @dd($accountId);
+        // @dd(session()->all());
+
+        $name = $users->account_name;
+        $account_address = $users->account_address;
+        $email = $users->email;
+        $phone_number = $users->phone_number;
+        $balance = $users->balance;
+
+        return view('profile-editsuccess/{$accountId}', compact('users'));
+    }
 }
