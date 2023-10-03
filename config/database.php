@@ -59,12 +59,8 @@ return [
             'strict' => true,
             'engine' => null,
             'options' => [
-                PDO::MYSQL_ATTR_SSL_KEY => base_path('storage/ssl-cert/DigiCertGlobalRootCA.crt.pem'),
+                //PDO::MYSQL_ATTR_SSL_KEY => base_path('storage/ssl-cert/DigiCertGlobalRootCA.crt.pem'),
             ]
-            // 'options' => extension_loaded('pdo_mysql') ? array_filter([
-            //     PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
-            // ]) : [],
-            
         ],
 
         'pgsql' => [

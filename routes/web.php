@@ -42,3 +42,4 @@ Route::middleware(['auth.check'])->group(function () {
     Route::get('/profile-edit/{id}', [ProfileController::class, 'profileEdit'])->name('profile-edit');
     Route::put('/profile-editsuccess/{id}', [ProfileController::class, 'profileEditSuccess'])->name('profile-editsuccess');
 });
+

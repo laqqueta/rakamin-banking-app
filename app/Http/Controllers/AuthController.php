@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -38,7 +39,12 @@ class AuthController extends Controller
             // Store the user's ID in the session
             session()->put('id', $userId);
 
-            return redirect('/dashboard')->with('success', 'Login Success');
+            // $accountId = $request->session()->get('id');
+            $users = User::find($userId);
+            $name = $users->account_name;
+
+
+            return redirect('/dashboard')->with('success', "Selamat Datang, $name");
         } else {
             return redirect('login')->withErrors('Username/Password Yang Dimasukkan Salah');
         }
@@ -48,7 +54,7 @@ class AuthController extends Controller
     {
         Auth::logout();
         Session::flush();
-        
+
         return redirect('/login')->with('success', 'Berhasil Logout');
     }
 }

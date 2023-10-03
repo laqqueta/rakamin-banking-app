@@ -1,5 +1,6 @@
 @extends('layout')
 @section('content')
+
         <main>
 
             <!-- Content Wrapper. Contains page content -->
@@ -54,31 +55,13 @@
             </div>
         </div>
     </div>
-
-    <script>
-        // Fungsi untuk mengubah angka menjadi format Rupiah
-        function formatRupiah(angka) {
-            var reverse = angka.toString().split('').reverse().join(''),
-                ribuan = reverse.match(/\d{1,3}/g);
-            ribuan = ribuan.join('.').split('').reverse().join('');
-            return 'Rp. ' + ribuan;
-        }
-
-        // Angka yang ingin diubah menjadi format Rupiah
-        var balance = {{ $users->balance }};
-        // var balance = 50000;
-
-        // Mengubah angka menjadi format Rupiah dan menaruhnya pada elemen paragraf
-        document.getElementById('rupiah').innerHTML = formatRupiah(balance);
-    </script>
-
 </div>
 
 
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
-        
+
             <!-- Small boxes (Stat box) -->
             <div class="row">
 
@@ -88,7 +71,7 @@
                     <div class="small-box bg-purple text-white">
                         <div class="inner">
                             <h3>Income</h3>
-                            <p>More info</p>
+                            <p id="income"></p>
                         </div>
                         <div class="icon">
                             <i class="fas fa-book-open"></i>
@@ -103,8 +86,7 @@
                     <div class="small-box bg-danger">
                         <div class="inner">
                             <h3>Outcome</h3>
-
-                            <p>More info</p>
+                            <p id="outcome"></p>
                         </div>
                         <div class="icon">
                             <i class="fas fa-school"></i>
@@ -113,7 +95,7 @@
                     </div>
                 </div>
                 <!-- ./col -->
-                
+
                 <!-- ./col -->
                 <div class="col-lg-4 col-6">
                     <!-- small box -->
@@ -155,6 +137,7 @@
         </main>
     <!-- ./wrapper -->
 
+
     @if (Session::has('success'))
         <script>
             const Toast = Swal.mixin({
@@ -176,4 +159,5 @@
         </script>
     @endif
         
-    @endsection
+@endsection
+

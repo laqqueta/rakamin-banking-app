@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -17,6 +17,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    protected $table = 'users';
 
     protected $primaryKey = 'id';
 
@@ -28,9 +29,11 @@ class User extends Authenticatable
         'account_card_number',
         'phone_number',
         'balance',
+        'created_at',
+        'updated_at'
     ];
 
-    protected $table = 'users';
+    public $timestamps = false;
 
     /**
      * The attributes that should be hidden for serialization.
@@ -51,6 +54,15 @@ class User extends Authenticatable
         // 'email_verified_at' => 'datetime',
         // 'password' => 'hashed',
     ];
+
     public $timestamps = false;
+
+
+
+    public function transfer(): BelongsToMany
+    {
+        return $this->belongsToMany(Transfer::class, 'transfer_detail')
+            ->withPivot('date', 'time', 'amount');
+    }
 
 }
