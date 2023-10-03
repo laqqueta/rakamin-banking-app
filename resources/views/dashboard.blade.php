@@ -46,6 +46,18 @@
                             <i class="fas fa-file-invoice"></i>
                         </div>
                         <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+@section('page-title', 'Dashboard')
+@section('content')
+                         <!-- /.content-header -->
+        <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-12"> <!-- Ubah col-6 menjadi col-12 -->
+                <!-- small box -->
+                <div class="small-box bg-info">
+                    <div class="inner">
+                        <h3>Tabungan & Deposito</h3>
+                        <p id="rupiah"></p>
                     </div>
                 </div>
             </div>

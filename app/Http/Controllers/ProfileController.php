@@ -25,12 +25,15 @@ class ProfileController extends Controller
         $account_address = $users->account_address;
         $email = $users->email;
         $phone_number = $users->phone_number;
+        $account_card_number = $users->account_card_number;
+        $balance = $users->balance;
 
         return view('profile', compact('users', 'data'));
     }
 
 
     public function profileEdit($accountId){
+
         $edited = User::findOrFail($accountId);
 
         $data = array(
@@ -46,7 +49,7 @@ class ProfileController extends Controller
         $edited = User::findOrFail($accountId);
         // $edited->save($request->all());
         $edited->account_name = $request->input('account_name');
-        $edited->account_address = $request->input('address');
+        $edited->account_address = $request->input('account_address');
         $edited->phone_number = $request->input('phone_number');
         $edited->save();
 
