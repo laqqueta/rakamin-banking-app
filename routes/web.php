@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TransferController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
@@ -24,7 +25,7 @@ Route::get('/', function () {
 });
 
 
-Route::get('/login', [AuthController::class, 'index'])->name('login');
+//Route::get('/login', [AuthController::class, 'index'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 
 Route::get('/login', function () {
@@ -38,8 +39,13 @@ Route::middleware(['auth.check'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('index');
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
     // Rute lain yang memerlukan autentikasi di sini
+
+    // Route for transfer view and process transfer
+    Route::get('/dashboard/transfer', [TransferController::class, 'index'])->name('transfer_view');
+    Route::post('/dashboard/transfer', [TransferController::class, 'transfer'])->name('transfer');
+
     Route::get('/profile', [ProfileController::class, 'profileIndex'])->name('profile');
     Route::get('/profile-edit/{id}', [ProfileController::class, 'profileEdit'])->name('profile-edit');
     Route::put('/profile-editsuccess/{id}', [ProfileController::class, 'profileEditSuccess'])->name('profile-editsuccess');
-});
 
+});

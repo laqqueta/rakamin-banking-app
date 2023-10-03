@@ -48,7 +48,7 @@
             );
         </script>
     @endif
-    
+
     @if ($errors->any())
         <script>
             @foreach ($errors->all() as $error)
@@ -60,8 +60,6 @@
             @endforeach
         </script>
     @endif
-
-    
 
 </body>
 </html>

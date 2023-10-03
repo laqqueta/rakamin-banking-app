@@ -15,10 +15,11 @@ return new class extends Migration
             $table->id('id');
             $table->string('account_name', 25);
             $table->text('password');
-            $table->string('account_address', 255);
+            $table->string('account_address', 125);
             $table->string('account_card_number', 19);
+            $table->char('pin', 6);
             $table->char('phone_number', 12);
-            $table->string('email', 32);
+            $table->string('email', 64);
             $table->bigInteger('balance');
         });
     }
