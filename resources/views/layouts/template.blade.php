@@ -225,16 +225,6 @@
             })
         </script>
     @endif
-
-    @if (Session::has('success'))
-    <script>
-        Swal.fire(
-            'Done',
-            'Transfer to account <b>{{ Session::get('success') }}</b> success!',
-            'success'
-            );
-        </script>
-    @endif
     
     @if (Session::get('error') === '505')
         <script>

@@ -34,6 +34,17 @@
         </div>
     </div>
 </div>
+
+@if (Session::has('success'))
+    <script>
+        Swal.fire(
+            'Done',
+            'Transfer to account <b>{{ Session::get('success') }}</b> success!',
+            'success'
+            );
+        </script>
+    @endif
+    
 @endsection
 
 
