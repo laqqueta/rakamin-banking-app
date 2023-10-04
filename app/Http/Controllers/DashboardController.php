@@ -62,18 +62,4 @@ class DashboardController extends Controller
         return $outcome;
     }
     
-    public function indexLayout(Request $request)
-    {
-        // Mendapatkan ID akun dari session
-        $accountId = $request->session()->get('id');
-        $users = User::find($accountId);
-
-        $name = $users->account_name;
-        $account_address = $users->account_address;
-        $email = $users->email;
-        $phone_number = $users->phone_number;
-        $balance = $users->balance;
-
-        return view('profile-editsuccess/{$accountId}', compact('users'));
-    }
 }

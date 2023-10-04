@@ -33,16 +33,12 @@ class AuthController extends Controller
         ];
 
         if (Auth::attempt($loginInfo)) {
-            // Retrieve the authenticated user's ID
+            
             $userId = Auth::id();
-
-            // Store the user's ID in the session
             session()->put('id', $userId);
 
-            // $accountId = $request->session()->get('id');
             $users = User::find($userId);
             $name = $users->account_name;
-
 
             return redirect('/dashboard')->with('success', "Selamat Datang, $name");
         } else {
@@ -50,7 +46,7 @@ class AuthController extends Controller
         }
     }
 
-    public function logout(Request $request)
+    public function logout()
     {
         Auth::logout();
         Session::flush();

@@ -2,7 +2,8 @@
 
 @section('page-title', 'Dashboard')
 @section('content')
-                         <!-- /.content-header -->
+
+    <!-- /.content-header -->
         <div class="jumbotron jumbotron-fluid">
     <div class="container">
         <div class="row">

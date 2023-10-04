@@ -41,20 +41,14 @@ class ProfileController extends Controller
     }
 
     public function profileEditSuccess(Request $request, $accountId){
+        
         $edited = User::findOrFail($accountId);
-        // $edited->save($request->all());
         $edited->account_name = $request->input('account_name');
         $edited->account_address = $request->input('account_address');
         $edited->phone_number = $request->input('phone_number');
         $edited->save();
-
-        // $edited->account_name = $request->account_name;
-        // $edited->account_address = $request->account_address;
-        // $edited->phone_number = $request->phone_number;
        
         return redirect()->route('profile')->with('success', 'Berhasil update profile!');
-        
-
         
     }
 }

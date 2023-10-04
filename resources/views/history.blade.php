@@ -21,7 +21,7 @@
             <th>Transfer Amount</th>
         </tr>
     </thead>
-    <tbod>
+    <tbody>
         <tr>
             @foreach($data as $key => $d)
                 <td>{{ $d->account_name }}</td>
@@ -32,12 +32,13 @@
                 <td id="amount"></td>
             @endforeach
         </tr>
-    </tbod>
+    </tbody>
 </table>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
 <script>
+    
     function formatRupiah(angka) {
         var reverse = angka.toString().split('').reverse().join(''),
             ribuan = reverse.match(/\d{1,3}/g);
@@ -50,11 +51,10 @@
         document.getElementById('amount').innerHTML = formatRupiah(balance);
     @endforeach
 
-
-
     $(document).ready( function () {
         $('#myTable').DataTable();
     });
+
 </script>
 </body>
 </html>

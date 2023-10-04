@@ -33,9 +33,9 @@
                     <h3 class="contents-text1 mt-5 text-center">Welcome to Rakamin Banking App</h3>
                     <div class="contents-text2 text-center">
                         <span class="contents-text3">
-                            If you don't have Bank of Kominfo Account, it's simple to
+                            If you don't have an account for rakamin banking app, it's simple to
                         </span>
-                        <span class="contents-text4">Register Online</span>
+                        <span class="contents-text4">register here</span>
                     </div>
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
