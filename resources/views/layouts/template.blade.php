@@ -27,7 +27,7 @@
 
         <!-- Preloader -->
         <div class="preloader flex-column justify-content-center align-items-center">
-            <img class="animation__shake" src="{{ asset('assets/rakamin-logo.png') }}" alt="logo" height="80" width="160">
+            <img class="animation__shake" src="{{ asset('assets/rakamin-logo.png') }}" alt="logo" height="80" width="172">
         </div>
 
 
