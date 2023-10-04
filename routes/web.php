@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\TransferController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -36,6 +37,7 @@ Route::get('/login', function () {
 })->name('login');
 
 Route::middleware(['auth.check'])->group(function () {
+
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('index');
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
@@ -46,5 +48,8 @@ Route::middleware(['auth.check'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'profileIndex'])->name('profile');
     Route::get('/profile-edit/{id}', [ProfileController::class, 'profileEdit'])->name('profile-edit');
     Route::put('/profile-editsuccess/{id}', [ProfileController::class, 'profileEditSuccess'])->name('profile-editsuccess');
+
+    // Route for history
+    Route::get('/dashboard/history', [HistoryController::class, 'index'])->name('transactions_history');
 
 });
