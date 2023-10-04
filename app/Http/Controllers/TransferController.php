@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Transfer;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\User;
+use Illuminate\Support\Facades\DB;
 use Throwable;
 
 class TransferController extends Controller
@@ -44,21 +45,36 @@ class TransferController extends Controller
         }
 
         // validate receiver account whether exist or not
-        $receiverAccount = User::query()->where('email', $request->email)->get(['email', 'id']);
+        $receiverAccount = User::query()->where('email', $request->email)->get(['id', 'balance']);
 
         if(sizeof($receiverAccount) < 1) {
             return to_route('transfer_view')->withErrors("The account that you\'ve tried to transfer is doesn\'t exist. Please check again!");
         }
 
         try {
-            $result = Transfer::query()->insertGetId(['user_id' => $accountId]); // insert sender id to transfer table
-            $transfer = Transfer::query()->findOrFail($result);
-            $transfer->user()->syncWithPivotValues([$receiverAccount[0]->id], // insert receiver id to transfer_detail table
-                [
-                    'date' => date('Y-m-d'),
-                    'time' => date('h:i:s'),
-                    'amount' => $request->transferAmount
-                ]);
+            DB::transaction(function () use ($accountId, $request, $receiverAccount, $userAccount) {
+                User::withoutTimestamps(function() use ($accountId, $request, $receiverAccount, $userAccount) {
+                    $senderCurrentBalance = $userAccount->balance - $request->transferAmount;
+                    $receiverCurrentBalance = $receiverAccount[0]->balance + $request->transferAmount;
+
+                    $sender = User::query()->findOrFail($accountId);
+                    $sender->balance = $senderCurrentBalance;
+                    $sender->save();
+
+                    $receiver = User::query()->findOrFail($receiverAccount[0]->id);
+                    $receiver->balance = $receiverCurrentBalance;
+                    $receiver->save();
+                });
+
+                $result = Transfer::query()->insertGetId(['user_id' => $accountId]); // insert sender id to transfer table
+                $transfer = Transfer::query()->findOrFail($result);
+                $transfer->user()->syncWithPivotValues([$receiverAccount[0]->id], // insert receiver id to transfer_detail table
+                    [
+                        'date' => date('Y-m-d'),
+                        'time' => date('h:i:s'),
+                        'amount' => $request->transferAmount
+                    ]);
+            }, 10);
         } catch (Throwable $e) {
             error_log($e->getMessage());
             return to_route('transfer_view')->with('error', '505');

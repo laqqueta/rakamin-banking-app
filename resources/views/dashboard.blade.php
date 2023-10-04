@@ -30,7 +30,7 @@
                     <div class="icon">
                         <i class="fas fa-file-invoice"></i>
                     </div>
-                    <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="{{route('transactions_history')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
         </div>
@@ -56,7 +56,7 @@
                         <div class="icon">
                             <i class="fas fa-hand-holding-usd"></i>
                         </div>
-                        <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{route('transactions_history', ['type' => 'income'])}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
 
@@ -71,7 +71,7 @@
                         <div class="icon">
                             <i class="fa-solid fa-money-bill-transfer"></i>
                         </div>
-                        <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{route('transactions_history', ['type' => 'outcome'])}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
