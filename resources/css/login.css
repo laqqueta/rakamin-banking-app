@@ -1,0 +1,284 @@
+body {
+    font-family: "Roboto", sans-serif;
+    background-color: #fff;
+}
+
+p {
+    color: #b3b3b3;
+    font-weight: 300;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+    font-family: "Roboto", sans-serif;
+}
+
+a {
+    -webkit-transition: .3s all ease;
+    -o-transition: .3s all ease;
+    transition: .3s all ease;
+}
+
+a:hover {
+    text-decoration: none !important;
+}
+
+.content {
+    padding: 7rem 0;
+}
+
+h2 {
+    font-size: 20px;
+}
+
+.half,
+.half .container>.row {
+    height: 100vh;
+}
+
+@media (max-width: 991.98px) {
+    .half .bg {
+        height: 500px;
+    }
+}
+
+.title-text {
+    top: 25px;
+    left: 100px;
+    color: rgba(0, 0, 0, 1);
+    width: 137px;
+    height: auto;
+    position: absolute;
+    font-size: 20px;
+    font-style: SemiBold;
+    text-align: center;
+    font-family: Poppins;
+    font-weight: 600;
+    line-height: normal;
+    font-stretch: normal;
+    text-decoration: none;
+}
+
+.title-ellipse {
+    top: 20px;
+    left: 30px;
+    width: 70px;
+    height: 50px;
+    position: absolute;
+}
+
+.title-quotes {
+    top: 450px;
+    left: 52px;
+    color: rgba(0, 0, 0, 1);
+    width: 520px;
+    height: auto;
+    position: absolute;
+    font-size: 17px;
+    font-style: Medium;
+    text-align: center;
+    font-family: Poppins;
+    font-weight: 500;
+    line-height: normal;
+    font-stretch: normal;
+    text-decoration: none;
+}
+
+.half .contents {
+    flex: 1;
+    background-color: #1a88ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+}
+
+.contents-text1 {
+    font-size: 24px;
+    font-weight: 500;
+    color: #fff;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.contents-text2 {
+    font-size: 18px;
+    font-weight: 400;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.contents-text3 {
+    color: #fff;
+    font-style: italic;
+}
+
+.contents-text4 {
+    color: darkblue;
+    font-weight: 500;
+}
+
+.half .contents,
+.half .bg {
+    width: 50%;
+}
+
+/* Gaya Formulir */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group.first {
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+}
+
+.form-group.last {
+    border-bottom: 1px solid #000000;
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+}
+
+.form-group label {
+    font-size: 12px;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.form-control {
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 0;
+    background-color: #f8f9fa;
+}
+
+.form-control:active,
+.form-control:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+/* Gaya Checkbox */
+.control {
+    display: block;
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.control .caption {
+    position: relative;
+    top: 2px;
+    color: darkblue;
+}
+
+.control input {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+}
+
+.control__indicator {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background: darkblue;
+    border-radius: 4px;
+}
+
+.control--radio .control__indicator {
+    border-radius: 50%;
+}
+
+.control:hover input~.control__indicator,
+.control input:focus~.control__indicator {
+    background: darkblue;
+}
+
+.control input:checked~.control__indicator {
+    background: #1c82ef;
+}
+
+.control:hover input:not([disabled]):checked~.control__indicator,
+.control input:checked:focus~.control__indicator {
+    background: #1a88ff;
+}
+
+.control input:disabled~.control__indicator {
+    background: #00ff04;
+    opacity: 0.9;
+    pointer-events: none;
+}
+
+.control__indicator:after {
+    font-family: 'icomoon';
+    content: '\e5ca';
+    position: absolute;
+    display: none;
+    font-size: 16px;
+    transition: 0.3s all ease;
+}
+
+.control input:checked~.control__indicator:after {
+    display: block;
+    color: darkblue;
+}
+
+.control--checkbox .control__indicator:after {
+    top: 50%;
+    left: 50%;
+    margin-top: -1px;
+    transform: translate(-50%, -50%);
+}
+
+.control--checkbox input:disabled~.control__indicator:after {
+    border-color: darkblue;
+}
+
+.half .bg {
+    background-size: 80% 100%;
+    background-position: center;
+}
+
+.half a {
+    color: #888;
+    text-decoration: underline;
+}
+
+.half .btn {
+    height: 54px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.half .forgot-pass {
+    position: relative;
+    top: 2px;
+    font-size: 14px;
+    color: red;
+}
+
+/* Tombol */
+.btn {
+    height: 54px;
+    padding-left: 30px;
+    padding-right: 30px;
+    font-size: 18px;
+    background-color: darkblue;
+}
